@@ -31,12 +31,12 @@ function! airline#init#bootstrap()
   call s:check_defined('g:airline_mode_map', {})
   call extend(g:airline_mode_map, {
         \ '__' : '------',
-        \ 'n'  : 'NORMAL',
-        \ 'i'  : 'INSERT',
-        \ 'R'  : 'REPLACE',
-        \ 'v'  : 'VISUAL',
+        \ 'n'  : 'N',
+        \ 'i'  : 'I',
+        \ 'R'  : 'R',
+        \ 'v'  : 'V',
         \ 'V'  : 'V-LINE',
-        \ 'c'  : 'COMMAND',
+        \ 'c'  : 'CMD',
         \ '' : 'V-BLOCK',
         \ 's'  : 'SELECT',
         \ 'S'  : 'S-LINE',
@@ -66,7 +66,6 @@ function! airline#init#bootstrap()
 
   call airline#parts#define('mode', {
         \ 'function': 'airline#parts#mode',
-        \ 'accent': 'bold',
         \ })
   call airline#parts#define_function('iminsert', 'airline#parts#iminsert')
   call airline#parts#define_function('paste', 'airline#parts#paste')
@@ -76,7 +75,7 @@ function! airline#init#bootstrap()
         \ 'accent': 'red',
         \ })
   call airline#parts#define_raw('file', '%f%m')
-  call airline#parts#define_raw('linenr', '%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#')
+  call airline#parts#define_raw('linenr', '%{g:airline_symbols.linenr}%#__accent_bold#%4l%\:%3c%')
   call airline#parts#define_function('ffenc', 'airline#parts#ffenc')
   call airline#parts#define_empty(['hunks', 'branch', 'tagbar', 'syntastic', 'eclim', 'whitespace','windowswap'])
   call airline#parts#define_text('capslock', '')
